@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import './Registration.css'
 
+const KENYAN_COUNTIES = [
+  'Baringo', 'Bomet', 'Bungoma', 'Busia', 'Elgeyo-Marakwet', 'Embu', 'Garissa',
+  'Homa Bay', 'Isiolo', 'Kajiado', 'Kakamega', 'Kericho', 'Kiambu', 'Kilifi',
+  'Kirinyaga', 'Kisii', 'Kisumu', 'Kitui', 'Kwale', 'Laikipia', 'Lamu', 'Machakos',
+  'Makueni', 'Mandera', 'Marsabit', 'Meru', 'Migori', 'Mombasa', 'Murang\'a',
+  'Nairobi', 'Nakuru', 'Nandi', 'Narok', 'Nyamira', 'Nyandarua', 'Nyeri',
+  'Samburu', 'Siaya', 'Taita-Taveta', 'Tana River', 'Tharaka-Nithi', 'Trans Nzoia',
+  'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
+]
+
 function TherapistRegistration() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -13,6 +23,9 @@ function TherapistRegistration() {
     password: '',
     confirmPassword: ''
   })
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -92,30 +105,46 @@ function TherapistRegistration() {
             required
           >
             <option value="">Select County</option>
-            <option value="Nairobi">Nairobi</option>
-            <option value="Mombasa">Mombasa</option>
-            <option value="Kisumu">Kisumu</option>
-            <option value="Nakuru">Nakuru</option>
-            <option value="Eldoret">Eldoret</option>
+            {KENYAN_COUNTIES.map(county => (
+              <option key={county} value={county}>{county}</option>
+            ))}
           </select>
           
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '👁️' : '👁️🗨️'}
+            </button>
+          </div>
           
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-field">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? '👁️' : '👁️🗨️'}
+            </button>
+          </div>
           
           <button type="submit" className="btn-primary">Register as Therapist</button>
         </form>

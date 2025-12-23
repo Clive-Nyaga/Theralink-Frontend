@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import './Registration.css'
 
+const KENYAN_COUNTIES = [
+  'Baringo', 'Bomet', 'Bungoma', 'Busia', 'Elgeyo-Marakwet', 'Embu', 'Garissa',
+  'Homa Bay', 'Isiolo', 'Kajiado', 'Kakamega', 'Kericho', 'Kiambu', 'Kilifi',
+  'Kirinyaga', 'Kisii', 'Kisumu', 'Kitui', 'Kwale', 'Laikipia', 'Lamu', 'Machakos',
+  'Makueni', 'Mandera', 'Marsabit', 'Meru', 'Migori', 'Mombasa', 'Murang\'a',
+  'Nairobi', 'Nakuru', 'Nandi', 'Narok', 'Nyamira', 'Nyandarua', 'Nyeri',
+  'Samburu', 'Siaya', 'Taita-Taveta', 'Tana River', 'Tharaka-Nithi', 'Trans Nzoia',
+  'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
+]
+
 function PatientRegistration() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -19,6 +29,8 @@ function PatientRegistration() {
   })
   
   const [showGuardianFields, setShowGuardianFields] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -83,7 +95,8 @@ function PatientRegistration() {
           
           {showGuardianFields && (
             <div className="guardian-section">
-              <h3>Guardian Information (Required for under 18)</h3>
+              <h3>Guardian Information</h3>
+              <p className="guardian-notice">Since you are under 18, please provide your guardian's details. Your guardian will need to consent to your therapy registration.</p>
               <div className="form-row">
                 <input
                   type="text"
@@ -146,30 +159,46 @@ function PatientRegistration() {
             required
           >
             <option value="">Select County</option>
-            <option value="Nairobi">Nairobi</option>
-            <option value="Mombasa">Mombasa</option>
-            <option value="Kisumu">Kisumu</option>
-            <option value="Nakuru">Nakuru</option>
-            <option value="Eldoret">Eldoret</option>
+            {KENYAN_COUNTIES.map(county => (
+              <option key={county} value={county}>{county}</option>
+            ))}
           </select>
           
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '👁️' : '👁️‍🗨️'}
+            </button>
+          </div>
           
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-field">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+            </button>
+          </div>
           
           <button type="submit" className="btn-primary">Register as Patient</button>
         </form>
