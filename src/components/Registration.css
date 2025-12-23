@@ -19,7 +19,7 @@
 .registration-form h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #1e293b;
+  color: var(--soft-brown);
 }
 
 .registration-form form {
@@ -48,7 +48,7 @@
 .registration-form input:focus,
 .registration-form select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--terracotta);
 }
 
 .guardian-section {
@@ -60,7 +60,7 @@
 
 .guardian-section h3 {
   margin: 0 0 0.5rem 0;
-  color: #1e293b;
+  color: var(--soft-brown);
   font-size: 1.1rem;
 }
 
@@ -104,19 +104,40 @@
 }
 
 .btn-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, var(--terracotta), var(--rusty-red));
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
   margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(198, 93, 50, 0.3);
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(198, 93, 50, 0.4);
+}
+
+.form-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--soft-brown);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--terracotta);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+.link-button:hover {
+  color: var(--rusty-red);
 }
 
 @media (max-width: 768px) {

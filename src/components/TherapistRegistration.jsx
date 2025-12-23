@@ -11,7 +11,7 @@ const KENYAN_COUNTIES = [
   'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
 ]
 
-function TherapistRegistration() {
+function TherapistRegistration({ onSwitchToLogin }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -148,6 +148,10 @@ function TherapistRegistration() {
           
           <button type="submit" className="btn-primary">Register as Therapist</button>
         </form>
+        
+        <p className="form-link">
+          Already have an account? <button type="button" onClick={onSwitchToLogin} className="link-button">Login here</button>
+        </p>
       </div>
     </div>
   )

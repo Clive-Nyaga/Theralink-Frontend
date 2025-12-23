@@ -2,16 +2,27 @@ import { useState } from 'react'
 import './App.css'
 import PatientRegistration from './components/PatientRegistration'
 import TherapistRegistration from './components/TherapistRegistration'
+import PatientLogin from './components/PatientLogin'
+import TherapistLogin from './components/TherapistLogin'
+import theralinkLogo from './assets/TheraLink.png'
 
 function App() {
   const [currentView, setCurrentView] = useState('landing')
 
   if (currentView === 'patient-registration') {
-    return <PatientRegistration />
+    return <PatientRegistration onSwitchToLogin={() => setCurrentView('patient-login')} />
   }
 
   if (currentView === 'therapist-registration') {
-    return <TherapistRegistration />
+    return <TherapistRegistration onSwitchToLogin={() => setCurrentView('therapist-login')} />
+  }
+
+  if (currentView === 'patient-login') {
+    return <PatientLogin onSwitchToRegister={() => setCurrentView('patient-registration')} />
+  }
+
+  if (currentView === 'therapist-login') {
+    return <TherapistLogin onSwitchToRegister={() => setCurrentView('therapist-registration')} />
   }
   return (
     <div className="app">
@@ -19,7 +30,8 @@ function App() {
       <header className="header">
         <div className="container">
           <div className="logo">
-            <h2>TheraLink</h2>
+            <img src={theralinkLogo} alt="TheraLink" className="logo-img" />
+            <span className="theralink-text">TheraLink</span>
           </div>
           <nav className="nav">
             <a href="#services">Services</a>
