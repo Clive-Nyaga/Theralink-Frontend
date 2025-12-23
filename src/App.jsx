@@ -1,6 +1,18 @@
+import { useState } from 'react'
 import './App.css'
+import PatientRegistration from './components/PatientRegistration'
+import TherapistRegistration from './components/TherapistRegistration'
 
 function App() {
+  const [currentView, setCurrentView] = useState('landing')
+
+  if (currentView === 'patient-registration') {
+    return <PatientRegistration />
+  }
+
+  if (currentView === 'therapist-registration') {
+    return <TherapistRegistration />
+  }
   return (
     <div className="app">
       {/* Header */}
@@ -21,11 +33,11 @@ function App() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1>Mental Health Support for Every Kenyan</h1>
-          <p>Connect with licensed therapists through secure online sessions or in-person visits. Your mental wellness journey starts here.</p>
+          <h1>Connecting Mental Health Care in Kenya</h1>
+          <p>Whether you're seeking therapy or a therapist looking to grow your practice, TheraLink bridges the gap between mental health professionals and those who need support.</p>
           <div className="hero-buttons">
-            <button className="btn-primary">Find a Therapist</button>
-            <button className="btn-secondary">Learn More</button>
+            <button className="btn-primary" onClick={() => setCurrentView('patient-registration')}>Find a Therapist</button>
+            <button className="btn-secondary" onClick={() => setCurrentView('therapist-registration')}>Join as Therapist</button>
           </div>
         </div>
       </section>
@@ -33,7 +45,7 @@ function App() {
       {/* Services Section */}
       <section id="services" className="services">
         <div className="container">
-          <h2>How We Help</h2>
+          <h2>For Everyone in Mental Health</h2>
           <div className="services-grid">
             <div className="service-card">
               <div className="service-icon">💻</div>
@@ -46,9 +58,9 @@ function App() {
               <p>Face-to-face therapy at our partner clinics across Kenya. Professional, private environments.</p>
             </div>
             <div className="service-card">
-              <div className="service-icon">🌍</div>
-              <h3>Local Expertise</h3>
-              <p>Therapists who understand Kenyan culture and can communicate in your preferred language.</p>
+              <div className="service-icon">💼</div>
+              <h3>Grow Your Practice</h3>
+              <p>Therapists can expand their client base and diversify income through our secure platform.</p>
             </div>
           </div>
         </div>
@@ -92,9 +104,9 @@ function App() {
       <section className="cta">
         <div className="container">
           <div className="cta-content">
-            <h2>Ready to Start Your Mental Health Journey?</h2>
-            <p>Join thousands of Kenyans who have found support through TheraLink</p>
-            <button className="btn-primary">Book Your First Session</button>
+            <h2>Ready to Connect?</h2>
+            <p>Join thousands using TheraLink - whether seeking support or providing professional care</p>
+            <button className="btn-primary" onClick={() => setCurrentView('patient-registration')}>Get Started Today</button>
           </div>
         </div>
       </section>
