@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Registration.css'
+import Header from './Header'
 
 const KENYAN_COUNTIES = [
   'Baringo', 'Bomet', 'Bungoma', 'Busia', 'Elgeyo-Marakwet', 'Embu', 'Garissa',
@@ -11,7 +12,7 @@ const KENYAN_COUNTIES = [
   'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
 ]
 
-function TherapistRegistration({ onSwitchToLogin }) {
+function TherapistRegistration({ onSwitchToLogin, onGetStarted, onGoHome }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -39,7 +40,9 @@ function TherapistRegistration({ onSwitchToLogin }) {
   }
 
   return (
-    <div className="registration-container">
+    <>
+      <Header onGetStarted={onGetStarted} onGoHome={onGoHome} />
+      <div className="registration-container" style={{ paddingTop: '100px' }}>
       <div className="registration-form">
         <h2>Therapist Registration</h2>
         <form onSubmit={handleSubmit}>
@@ -153,7 +156,8 @@ function TherapistRegistration({ onSwitchToLogin }) {
           Already have an account? <button type="button" onClick={onSwitchToLogin} className="link-button">Login here</button>
         </p>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 

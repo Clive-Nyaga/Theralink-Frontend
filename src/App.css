@@ -149,26 +149,23 @@ body {
   flex-wrap: wrap;
 }
 
-.hero-buttons .btn-primary,
-.hero-buttons .btn-secondary {
+.hero-buttons .btn-primary {
   background: white;
-  color: var(--soft-brown);
-  border: 2px solid white;
+  color: var(--terracotta);
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  position: relative;
   width: 200px;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  z-index: 10;
-  position: relative;
 }
 
-.hero-buttons .btn-primary:hover,
-.hero-buttons .btn-secondary:hover {
+.hero-buttons .btn-primary:hover {
   background: var(--warm-beige);
-  color: var(--soft-brown);
+  color: var(--terracotta);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
 }

@@ -4,25 +4,50 @@ import PatientRegistration from './components/PatientRegistration'
 import TherapistRegistration from './components/TherapistRegistration'
 import PatientLogin from './components/PatientLogin'
 import TherapistLogin from './components/TherapistLogin'
+import UserTypeSelection from './components/UserTypeSelection'
 import theralinkLogo from './assets/TheraLink.png'
 
 function App() {
   const [currentView, setCurrentView] = useState('landing')
 
+  if (currentView === 'user-type-selection') {
+    return <UserTypeSelection 
+      onSelectUserType={(type) => setCurrentView(`${type}-registration`)} 
+      onGetStarted={() => setCurrentView('user-type-selection')}
+      onGoHome={() => setCurrentView('landing')}
+    />
+  }
+
   if (currentView === 'patient-registration') {
-    return <PatientRegistration onSwitchToLogin={() => setCurrentView('patient-login')} />
+    return <PatientRegistration 
+      onSwitchToLogin={() => setCurrentView('patient-login')}
+      onGetStarted={() => setCurrentView('user-type-selection')}
+      onGoHome={() => setCurrentView('landing')}
+    />
   }
 
   if (currentView === 'therapist-registration') {
-    return <TherapistRegistration onSwitchToLogin={() => setCurrentView('therapist-login')} />
+    return <TherapistRegistration 
+      onSwitchToLogin={() => setCurrentView('therapist-login')}
+      onGetStarted={() => setCurrentView('user-type-selection')}
+      onGoHome={() => setCurrentView('landing')}
+    />
   }
 
   if (currentView === 'patient-login') {
-    return <PatientLogin onSwitchToRegister={() => setCurrentView('patient-registration')} />
+    return <PatientLogin 
+      onSwitchToRegister={() => setCurrentView('patient-registration')}
+      onGetStarted={() => setCurrentView('user-type-selection')}
+      onGoHome={() => setCurrentView('landing')}
+    />
   }
 
   if (currentView === 'therapist-login') {
-    return <TherapistLogin onSwitchToRegister={() => setCurrentView('therapist-registration')} />
+    return <TherapistLogin 
+      onSwitchToRegister={() => setCurrentView('therapist-registration')}
+      onGetStarted={() => setCurrentView('user-type-selection')}
+      onGoHome={() => setCurrentView('landing')}
+    />
   }
   return (
     <div className="app">
@@ -37,7 +62,7 @@ function App() {
             <a href="#services">Services</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <button className="btn-primary">Get Started</button>
+            <button className="btn-primary" onClick={() => setCurrentView('user-type-selection')}>Get Started</button>
           </nav>
         </div>
       </header>
@@ -48,8 +73,7 @@ function App() {
           <h1>Connecting Mental Health Care in Kenya</h1>
           <p>Whether you're seeking therapy or a therapist looking to grow your practice, TheraLink bridges the gap between mental health professionals and those who need support.</p>
           <div className="hero-buttons">
-            <button className="btn-primary" onClick={() => setCurrentView('patient-registration')}>Find a Therapist</button>
-            <button className="btn-secondary" onClick={() => setCurrentView('therapist-registration')}>Join as Therapist</button>
+            <button className="btn-primary" onClick={() => setCurrentView('user-type-selection')}>Get Started</button>
           </div>
         </div>
       </section>
@@ -118,7 +142,7 @@ function App() {
           <div className="cta-content">
             <h2>Ready to Connect?</h2>
             <p>Join thousands using TheraLink - whether seeking support or providing professional care</p>
-            <button className="btn-primary" onClick={() => setCurrentView('patient-registration')}>Get Started Today</button>
+            <button className="btn-primary" onClick={() => setCurrentView('user-type-selection')}>Get Started Today</button>
           </div>
         </div>
       </section>

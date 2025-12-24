@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './Registration.css'
+import Header from './Header'
 
-function TherapistLogin({ onSwitchToRegister }) {
+function TherapistLogin({ onSwitchToRegister, onGetStarted, onGoHome }) {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -21,7 +22,9 @@ function TherapistLogin({ onSwitchToRegister }) {
   }
 
   return (
-    <div className="registration-container">
+    <>
+      <Header onGetStarted={onGetStarted} onGoHome={onGoHome} />
+      <div className="registration-container" style={{ paddingTop: '100px' }}>
       <div className="registration-form">
         <h2>Therapist Login</h2>
         <form onSubmit={handleSubmit}>
@@ -59,7 +62,8 @@ function TherapistLogin({ onSwitchToRegister }) {
           Don't have an account? <button type="button" onClick={onSwitchToRegister} className="link-button">Register here</button>
         </p>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 
