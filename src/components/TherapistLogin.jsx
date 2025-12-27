@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Registration.css'
 import Header from './Header'
 
-function TherapistLogin({ onSwitchToRegister, onGetStarted, onGoHome }) {
+function TherapistLogin({ onSwitchToRegister, onGetStarted, onGoHome, onSwitchToDashboard }) {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -18,7 +18,8 @@ function TherapistLogin({ onSwitchToRegister, onGetStarted, onGoHome }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Therapist login:', formData)
-    // Handle login logic here
+    // Simulate successful login - redirect to dashboard
+    onSwitchToDashboard()
   }
 
   return (

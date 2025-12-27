@@ -181,10 +181,53 @@
   line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .user-type-options {
-    grid-template-columns: 1fr;
-  }
+.checkbox-group {
+  margin: 1rem 0;
+}
+
+.checkbox-group label:first-child {
+  font-weight: 600;
+  color: var(--soft-brown);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--rusty-red);
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+  width: auto;
+}
+
+textarea {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--terracotta);
+}
+
+.registration-form h3 {
+  color: var(--soft-brown);
+  margin: 2rem 0 1rem 0;
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--warm-beige);
+  padding-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {

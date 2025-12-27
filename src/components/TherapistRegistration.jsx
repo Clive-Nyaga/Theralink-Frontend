@@ -12,7 +12,7 @@ const KENYAN_COUNTIES = [
   'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
 ]
 
-function TherapistRegistration({ onSwitchToLogin, onGetStarted, onGoHome }) {
+function TherapistRegistration({ onSwitchToLogin, onGetStarted, onGoHome, onSwitchToDashboard }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,7 +36,8 @@ function TherapistRegistration({ onSwitchToLogin, onGetStarted, onGoHome }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Therapist registration:', formData)
-    // Handle registration logic here
+    // Simulate successful registration - redirect to dashboard
+    onSwitchToDashboard()
   }
 
   return (

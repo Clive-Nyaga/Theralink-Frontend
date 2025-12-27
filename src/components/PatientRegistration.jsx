@@ -12,7 +12,7 @@ const KENYAN_COUNTIES = [
   'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'
 ]
 
-function PatientRegistration({ onSwitchToLogin, onGetStarted, onGoHome }) {
+function PatientRegistration({ onSwitchToLogin, onGetStarted, onGoHome, onSwitchToDashboard }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -49,7 +49,8 @@ function PatientRegistration({ onSwitchToLogin, onGetStarted, onGoHome }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Patient registration:', formData)
-    // Handle registration logic here
+    // Simulate successful registration - redirect to dashboard
+    onSwitchToDashboard()
   }
 
   return (
